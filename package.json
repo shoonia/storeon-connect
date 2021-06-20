@@ -52,6 +52,13 @@
       "limit": "326 B"
     }
   ],
+  "files": [
+    "dist",
+    "src",
+    "LICENSE",
+    "package.json",
+    "README.md"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/shoonia/storeon-connect.git"
