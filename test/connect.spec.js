@@ -1,14 +1,30 @@
 const { createStoreon } = require('../dist/es5.cjs');
 
-jest.setTimeout(5);
-
 describe('connect', () => {
-  it('should run callback right after connect', (done) => {
+  it('should run callback right after connect', () => {
+    const spy = jest.fn();
     const { connect } = createStoreon([]);
 
-    connect((state) => {
-      expect(state).toEqual({});
-      done();
-    });
+    connect(spy);
+
+    expect(spy).toHaveBeenCalledTimes(1);
+    expect(spy).toHaveBeenCalledWith({});
+  });
+
+  it('should run with current actual state', () => {
+    const spy = jest.fn();
+
+    const { connect } = createStoreon([
+      (s) => {
+        s.on('@init', () => {
+          return { x: 0, y: 1 };
+        });
+      },
+    ]);
+
+    connect(spy);
+
+    expect(spy).toHaveBeenCalledTimes(1);
+    expect(spy).toHaveBeenCalledWith({ x: 0, y: 1 });
   });
 });
