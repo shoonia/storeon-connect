@@ -24,7 +24,9 @@ export let createStoreon = (modules) => {
     connect(...keys) {
       let cb = keys.pop();
 
-      subs.push({ keys, cb });
+      if (keys.length > 0) {
+        subs.push({ keys, cb });
+      }
 
       cb(get());
 
