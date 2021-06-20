@@ -15,7 +15,8 @@
   "scripts": {
     "lint": "eslint src/**/*.js",
     "build": "rollup -c",
-    "size": "size-limit"
+    "size": "size-limit",
+    "test": "jest"
   },
   "dependencies": {
     "storeon": "^3.1.4"
@@ -26,27 +27,29 @@
     "@rollup/plugin-commonjs": "^19.0.0",
     "@rollup/plugin-node-resolve": "^13.0.0",
     "@size-limit/preset-small-lib": "^4.12.0",
+    "@types/jest": "^26.0.23",
     "eslint": "^7.29.0",
+    "jest": "^27.0.4",
     "rollup": "^2.52.1",
     "simple-git-hooks": "^2.4.1",
     "size-limit": "^4.12.0"
   },
   "sideEffects": false,
   "simple-git-hooks": {
-    "pre-commit": "npm run lint && npm run build && npm run size"
+    "pre-commit": "npm run lint && npm run build && npm run size && npm test"
   },
   "size-limit": [
     {
       "path": "dist/es5.cjs.js",
-      "limit": "359 B"
+      "limit": "365 B"
     },
     {
       "path": "dist/es5.esm.js",
-      "limit": "366 B"
+      "limit": "372 B"
     },
     {
       "path": "dist/esm.js",
-      "limit": "314 B"
+      "limit": "318 B"
     }
   ],
   "repository": {
