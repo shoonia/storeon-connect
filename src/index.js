@@ -7,7 +7,9 @@ export let createStoreon = (modules) => {
 
   on('@changed', (state, changes) => {
     subs.forEach((sub) => {
-      let changesInKeys = sub.keys.some((key) => key in changes);
+      let changesInKeys = sub.keys.some(
+        (key) => key in changes,
+      );
 
       if (changesInKeys) {
         sub.cb(state);
@@ -23,6 +25,8 @@ export let createStoreon = (modules) => {
       let cb = keys.pop();
 
       subs.push({ keys, cb });
+
+      cb(get());
 
       return () => {
         subs = subs.filter((s) => s.cb !== cb);
