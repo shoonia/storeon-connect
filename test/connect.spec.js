@@ -16,10 +16,8 @@ describe('connect', () => {
     const spy = jest.fn();
 
     const { connect } = createStoreon([
-      (s) => {
-        s.on('@init', () => {
-          return { x: 0, y: 1 };
-        });
+      (store) => {
+        store.on('@init', () => ({ x: 0, y: 1 }));
       },
     ]);
 
@@ -34,14 +32,9 @@ describe('connect', () => {
     const spy = jest.fn();
 
     const { connect, dispatch } = createStoreon([
-      (s) => {
-        s.on('@init', () => {
-          return { x: 0 };
-        });
-
-        s.on(event, ({ x }) => {
-          return { x: ++x };
-        });
+      (store) => {
+        store.on('@init', () => ({ x: 0 }));
+        store.on(event, ({ x }) => ({ x: ++x }));
       },
     ]);
 
@@ -57,14 +50,9 @@ describe('connect', () => {
     const spy = jest.fn();
 
     const { connect, dispatch } = createStoreon([
-      (s) => {
-        s.on('@init', () => {
-          return { x: 0 };
-        });
-
-        s.on(event, ({ x }) => {
-          return { x: ++x };
-        });
+      (store) => {
+        store.on('@init', () => ({ x: 0 }));
+        store.on(event, ({ x }) => ({ x: ++x }));
       },
     ]);
 
@@ -73,5 +61,26 @@ describe('connect', () => {
 
     expect(spy).toHaveBeenCalledTimes(2);
     expect(spy).toHaveBeenLastCalledWith({ x: 1 });
+  });
+
+  it('should connect for multiple keys', () => {
+    const xEvent = 'x/event';
+    const yEvent = 'y/event';
+    const spy = jest.fn();
+
+    const { connect, dispatch } = createStoreon([
+      (store) => {
+        store.on('@init', () => ({ x: 0, y: 0 }));
+        store.on(xEvent, ({ x }) => ({ x: ++x }));
+        store.on(yEvent, ({ y }) => ({ y: ++y }));
+      },
+    ]);
+
+    connect('x', 'y', spy);
+    dispatch(xEvent);
+    dispatch(yEvent);
+
+    expect(spy).toHaveBeenCalledTimes(3);
+    expect(spy).toHaveBeenLastCalledWith({ x: 1, y: 1 });
   });
 });
