@@ -1,6 +1,6 @@
 {
   "name": "storeon-connect",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A tiny connector for observes changes in Storeon",
   "main": "dist/es5.cjs.js",
   "module": "dist/es5.esm.js",
