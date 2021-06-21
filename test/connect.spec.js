@@ -83,4 +83,26 @@ describe('connect', () => {
     expect(spy).toHaveBeenCalledTimes(3);
     expect(spy).toHaveBeenLastCalledWith({ x: 1, y: 1 });
   });
+
+  it('should disconnect from store', () => {
+    const event = 'event';
+    const spy = jest.fn();
+
+    const { connect, dispatch, getState } = createStoreon([
+      (store) => {
+        store.on('@init', () => ({ x: 0 }));
+        store.on(event, ({ x }) => ({ x: ++x }));
+      },
+    ]);
+
+    const disconnect = connect('x', spy);
+
+    dispatch(event);
+    disconnect();
+    dispatch(event);
+
+    expect(spy).toHaveBeenCalledTimes(2);
+    expect(spy).toHaveBeenLastCalledWith({ x: 1 });
+    expect(getState()).toEqual({ x: 2 });
+  });
 });
