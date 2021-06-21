@@ -1,8 +1,4 @@
-import { createStoreon as core } from 'storeon';
-
-export let createStoreon = (modules) => {
-  let { dispatch, get, on } = core(modules);
-
+export let storeonConnect = ({ dispatch, get, on }) => {
   let subs = [];
 
   on('@changed', (state, changes) => {

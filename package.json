@@ -21,8 +21,6 @@
   "devDependencies": {
     "@babel/preset-env": "^7.14.5",
     "@rollup/plugin-babel": "^5.3.0",
-    "@rollup/plugin-commonjs": "^19.0.0",
-    "@rollup/plugin-node-resolve": "^13.0.0",
     "@size-limit/preset-small-lib": "^4.12.0",
     "@types/jest": "^26.0.23",
     "eslint": "^7.29.0",
@@ -32,6 +30,14 @@
     "size-limit": "^4.12.0",
     "storeon": "^3.1.4"
   },
+  "peerDependencies": {
+    "storeon": "^3.0.0"
+  },
+  "peerDependenciesMeta": {
+    "storeon": {
+      "optional": true
+    }
+  },
   "sideEffects": false,
   "simple-git-hooks": {
     "pre-commit": "npm run lint && npm run build && npm run size && npm test"
@@ -39,15 +45,15 @@
   "size-limit": [
     {
       "path": "dist/es5.cjs.js",
-      "limit": "370 B"
+      "limit": "209 B"
     },
     {
       "path": "dist/es5.esm.js",
-      "limit": "378 B"
+      "limit": "215 B"
     },
     {
       "path": "dist/esm.js",
-      "limit": "326 B"
+      "limit": "171 B"
     }
   ],
   "files": [

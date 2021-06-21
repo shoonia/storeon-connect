@@ -1,5 +1,3 @@
-import commonjs from '@rollup/plugin-commonjs';
-import nodeResolve from '@rollup/plugin-node-resolve';
 import { getBabelOutputPlugin } from '@rollup/plugin-babel';
 
 const babelPlugin = getBabelOutputPlugin({
@@ -36,9 +34,5 @@ export default {
         babelPlugin,
       ],
     },
-  ],
-  plugins: [
-    commonjs(),
-    nodeResolve(),
   ],
 };

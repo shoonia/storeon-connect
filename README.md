@@ -16,8 +16,10 @@ yarn add storeon-connect
 
 ## Example
 
+**store.js**
+
 ```js
-import { createStoreon } from 'storeon-connect';
+import { createStoreon } from 'storeon';
 
 const count = (store) => {
   // Initial state
@@ -26,7 +28,14 @@ const count = (store) => {
   store.on('increment', ({ count }) => ({ count: count + 1 }));
 };
 
-const { getState, dispatch, connect } = createStoreon([count]);
+export const store = createStoreon([count]);
+```
+
+```js
+import { storeonConnect } from 'storeon-connect';
+import { store } from './store.js';
+
+const { getState, dispatch, connect } = storeonConnect(store);
 
 const output = document.querySelector('#output');
 const button = document.querySelector('#button');
@@ -47,10 +56,8 @@ button.addEventListener('click', () => {
 
 ### createStoreon
 
-Creates a store that holds the complete state tree of your app and returns 3 methods for work with the app state.
-
 ```js
-const { getState, dispatch, connect } = createStoreon(modules);
+const { getState, dispatch, connect } = storeonConnect(store);
 ```
 
 - [Storeon store](https://github.com/storeon/storeon#store)
