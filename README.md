@@ -54,7 +54,7 @@ button.addEventListener('click', () => {
 
 ## API
 
-### createStoreon
+### storeonConnect
 
 ```js
 const { getState, dispatch, connect } = storeonConnect(store);
