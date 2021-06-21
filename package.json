@@ -1,6 +1,6 @@
 {
   "name": "storeon-connect",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A tiny connector for observes changes in Storeon",
   "main": "dist/es5.cjs.js",
   "module": "dist/es5.esm.js",
@@ -30,7 +30,7 @@
     "@types/jest": "^26.0.23",
     "eslint": "^7.29.0",
     "jest": "^27.0.4",
-    "rollup": "^2.52.1",
+    "rollup": "^2.52.2",
     "simple-git-hooks": "^2.4.1",
     "size-limit": "^4.12.0"
   },
