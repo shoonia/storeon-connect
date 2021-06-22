@@ -84,6 +84,28 @@ describe('connect', () => {
     expect(spy).toHaveBeenLastCalledWith({ x: 1, y: 1 });
   });
 
+  it('should run only by connected key', () => {
+    const aEvent = 'a/event';
+    const bEvent = 'b/event';
+    const spy = jest.fn();
+
+    const { connect, dispatch, getState } = store([
+      (store) => {
+        store.on('@init', () => ({ a: 0, b: 0 }));
+        store.on(aEvent, ({ a }) => ({ a: ++a }));
+        store.on(bEvent, ({ b }) => ({ b: ++b }));
+      },
+    ]);
+
+    connect('a', spy);
+    dispatch(aEvent);
+    dispatch(bEvent);
+
+    expect(spy).toHaveBeenCalledTimes(2);
+    expect(spy).toHaveBeenLastCalledWith({ a: 1, b: 0 });
+    expect(getState()).toEqual({ a: 1, b: 1 });
+  });
+
   it('should disconnect from store', () => {
     const event = 'event';
     const spy = jest.fn();

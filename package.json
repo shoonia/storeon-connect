@@ -1,6 +1,6 @@
 {
   "name": "storeon-connect",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "A tiny connector for observes changes in Storeon",
   "main": "dist/es5.cjs.js",
   "module": "dist/es5.esm.js",
@@ -14,13 +14,13 @@
     }
   },
   "scripts": {
-    "lint": "eslint src/**/*.js",
+    "lint": "eslint src/**/*.js test/**/*.js",
     "build": "rollup -c",
     "size": "size-limit",
     "test": "jest"
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.14.5",
+    "@babel/preset-env": "^7.14.7",
     "@rollup/plugin-babel": "^5.3.0",
     "@size-limit/preset-small-lib": "^4.12.0",
     "@types/jest": "^26.0.23",
