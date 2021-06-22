@@ -17,7 +17,8 @@
     "lint": "eslint src/**/*.js test/**/*.js",
     "build": "rollup -c",
     "size": "size-limit",
-    "test": "jest"
+    "tsc": "tsc test/types-test.ts --noEmit --noImplicitAny --strict",
+    "test": "jest && npm run tsc"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.14.7",
@@ -29,7 +30,8 @@
     "rollup": "^2.52.2",
     "simple-git-hooks": "^2.4.1",
     "size-limit": "^4.12.0",
-    "storeon": "^3.1.4"
+    "storeon": "^3.1.4",
+    "typescript": "^4.3.4"
   },
   "peerDependencies": {
     "storeon": "^3.0.0"
