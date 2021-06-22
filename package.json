@@ -60,8 +60,8 @@
   "files": [
     "dist",
     "src",
+    "index.d.ts",
     "LICENSE",
-    "package.json",
     "README.md"
   ],
   "repository": {
