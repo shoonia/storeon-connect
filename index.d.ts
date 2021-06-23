@@ -5,11 +5,29 @@ export function storeonConnect<State, Events = any>(
 ): StoreonConnect<State, Events>;
 
 export interface StoreonConnect<State, Events> {
-  getState(): State;
-  dispatch: StoreonDispatch<Events & createStoreon.DispatchableEvents<State>>
-  connect(...args: [...keys: (keyof State)[], handler: ConnectHandler<State>]): Disconnect;
+  /**
+   * Return current state. You can use this method only to read state.
+   * Any state changes should be in event listeners.
+   *
+   * @returns The current state.
+   */
+  getState(): Readonly<State>;
+
+  /**
+   * Emit event.
+   *
+   * @param event The event name.
+   * @param data Any additional data for the event.
+   * @returns The current state.
+   */
+  dispatch: StoreonDispatch<Events & createStoreon.DispatchableEvents<State>>;
+
+  /**
+   * Connects store state by property keys.
+   *
+   * @returns The function disconnect from the store.
+   */
+  connect(...args: [...keys: (keyof State)[], handler: ConnectHandler<State>]): () => void;
 }
 
-export type ConnectHandler<State> = (state: State) => void;
-
-export type Disconnect = () => void;
+export type ConnectHandler<State> = (state: Readonly<State>) => void;

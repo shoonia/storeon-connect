@@ -28,8 +28,10 @@ const appModule: StoreonModule<IState, IEvents> = (store) => {
 const store = createStoreon<IState, IEvents>([appModule]);
 const { getState, dispatch, connect } = storeonConnect(store);
 
+const disconnect = connect('cool', ({ cool }) => { });
+disconnect();
+
 connect('name', 'age', ({ name, age }) => { });
-connect('cool', ({ cool }) => { });
 connect(({ name, age, cool }) => { });
 
 dispatch('set/user', { name: 'Bob', age: 100 });
