@@ -1,10 +1,10 @@
-const store = require('./setup.js');
+const createStore = require('./setup.js');
 
 describe('connect', () => {
   it('should run callback right after connect', () => {
     const spy = jest.fn();
 
-    const { connect } = store([]);
+    const { connect } = createStore([]);
 
     connect(spy);
 
@@ -15,7 +15,7 @@ describe('connect', () => {
   it('should run with current actual state', () => {
     const spy = jest.fn();
 
-    const { connect } = store([
+    const { connect } = createStore([
       (store) => {
         store.on('@init', () => ({ x: 0, y: 1 }));
       },
@@ -31,7 +31,7 @@ describe('connect', () => {
     const event = 'inc';
     const spy = jest.fn();
 
-    const { connect, dispatch } = store([
+    const { connect, dispatch } = createStore([
       (store) => {
         store.on('@init', () => ({ x: 0 }));
         store.on(event, ({ x }) => ({ x: ++x }));
@@ -49,7 +49,7 @@ describe('connect', () => {
     const event = 'inc';
     const spy = jest.fn();
 
-    const { connect, dispatch } = store([
+    const { connect, dispatch } = createStore([
       (store) => {
         store.on('@init', () => ({ x: 0 }));
         store.on(event, ({ x }) => ({ x: ++x }));
@@ -68,7 +68,7 @@ describe('connect', () => {
     const yEvent = 'y/event';
     const spy = jest.fn();
 
-    const { connect, dispatch } = store([
+    const { connect, dispatch } = createStore([
       (store) => {
         store.on('@init', () => ({ x: 0, y: 0 }));
         store.on(xEvent, ({ x }) => ({ x: ++x }));
@@ -89,7 +89,7 @@ describe('connect', () => {
     const bEvent = 'b/event';
     const spy = jest.fn();
 
-    const { connect, dispatch, getState } = store([
+    const { connect, dispatch, getState } = createStore([
       (store) => {
         store.on('@init', () => ({ a: 0, b: 0 }));
         store.on(aEvent, ({ a }) => ({ a: ++a }));
@@ -110,7 +110,7 @@ describe('connect', () => {
     const event = 'event';
     const spy = jest.fn();
 
-    const { connect, dispatch, getState } = store([
+    const { connect, dispatch, getState } = createStore([
       (store) => {
         store.on('@init', () => ({ x: 0 }));
         store.on(event, ({ x }) => ({ x: ++x }));

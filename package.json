@@ -48,15 +48,15 @@
   "size-limit": [
     {
       "path": "dist/es5.cjs.js",
-      "limit": "209 B"
+      "limit": "204 B"
     },
     {
       "path": "dist/es5.esm.js",
-      "limit": "215 B"
+      "limit": "209 B"
     },
     {
       "path": "dist/esm.js",
-      "limit": "171 B"
+      "limit": "170 B"
     }
   ],
   "files": [

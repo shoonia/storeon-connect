@@ -1,7 +1,7 @@
-export let storeonConnect = ({ dispatch, get, on }) => {
+export let storeonConnect = (store) => {
   let subs = [];
 
-  on('@changed', (state, changes) => {
+  store.on('@changed', (state, changes) => {
     subs.forEach((sub) => {
       let changesInKeys = sub.keys.some(
         (key) => key in changes,
@@ -14,8 +14,8 @@ export let storeonConnect = ({ dispatch, get, on }) => {
   });
 
   return {
-    getState: get,
-    dispatch,
+    getState: store.get,
+    dispatch: store.dispatch,
 
     connect(...keys) {
       let cb = keys.pop();
@@ -24,7 +24,7 @@ export let storeonConnect = ({ dispatch, get, on }) => {
         subs.push({ keys, cb });
       }
 
-      cb(get());
+      cb(store.get());
 
       return () => {
         subs = subs.filter((s) => s.cb !== cb);
