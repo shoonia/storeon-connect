@@ -8,10 +8,8 @@
   "source": "src/index.js",
   "types": "./index.d.ts",
   "exports": {
-    ".": {
-      "require": "./dist/es5.cjs.js",
-      "default": "./dist/es5.esm.js"
-    }
+    "import": "./dist/es5.esm.js",
+    "require": "./dist/es5.cjs.js"
   },
   "scripts": {
     "lint": "eslint src/**/*.js test/**/*.js",
