@@ -31,6 +31,10 @@ const { getState, dispatch, connect } = storeonConnect(store);
 const disconnect = connect('cool', ({ cool }) => { });
 disconnect();
 
+connect(() => {});
+connect(async () => {});
+connect('name', () => {});
+connect('name', async () => {});
 connect('name', 'age', ({ name, age }) => { });
 connect(({ name, age, cool }) => { });
 
