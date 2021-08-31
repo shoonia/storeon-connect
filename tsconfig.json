@@ -1,6 +1,6 @@
 {
-  "allowJs": true,
   "compilerOptions": {
+    "allowJs": true,
     "checkJs": true,
     "module": "ES2020",
     "moduleResolution": "node",
