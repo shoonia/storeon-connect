@@ -17,18 +17,18 @@ export default {
   input: './src/index.js',
   output: [
     {
-      file: './dist/esm.js',
-      format: 'esm',
+      file: './dist/index.js',
+      format: 'es',
     },
     {
-      file: './dist/es5.esm.js',
-      format: 'esm',
+      file: './dist/index.es5.js',
+      format: 'es',
       plugins: [
         babelPlugin,
       ],
     },
     {
-      file: './dist/es5.cjs.js',
+      file: './dist/index.cjs',
       format: 'cjs',
       plugins: [
         babelPlugin,

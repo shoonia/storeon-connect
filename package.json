@@ -3,21 +3,24 @@
   "version": "0.5.0",
   "description": "A tiny connector for observes changes in Storeon",
   "type": "module",
-  "main": "dist/es5.cjs.js",
-  "module": "dist/es5.esm.js",
-  "esmodule": "dist/esm.js",
+  "main": "dist/index.cjs",
+  "module": "dist/index.es5.js",
+  "esmodule": "dist/index.js",
   "source": "src/index.js",
   "types": "./src/index.d.ts",
   "exports": {
-    "import": "./dist/es5.esm.js",
-    "require": "./dist/es5.cjs.js"
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js",
+      "default": "./dist/index.es5.js"
+    }
   },
   "scripts": {
     "lint": "eslint src/**/*.js test/**/*.js",
     "build": "rollup -c",
     "size": "size-limit",
     "tsc": "tsc test/types-test.ts --noEmit --strict",
-    "test": "jest && npm run tsc"
+    "test": "node --experimental-vm-modules node_modules/.bin/jest && npm run tsc"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.15.0",
@@ -46,15 +49,15 @@
   },
   "size-limit": [
     {
-      "path": "dist/es5.cjs.js",
+      "path": "dist/index.cjs",
       "limit": "204 B"
     },
     {
-      "path": "dist/es5.esm.js",
+      "path": "dist/index.es5.js",
       "limit": "209 B"
     },
     {
-      "path": "dist/esm.js",
+      "path": "dist/index.js",
       "limit": "170 B"
     }
   ],
