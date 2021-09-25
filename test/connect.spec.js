@@ -1,4 +1,5 @@
-const createStore = require('./setup.js');
+import { jest } from '@jest/globals';
+import { createStore } from './setup.js';
 
 describe('connect', () => {
   it('should run callback right after connect', () => {
