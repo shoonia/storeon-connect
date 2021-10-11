@@ -2,7 +2,7 @@ export let storeonConnect = (store) => {
   let subs = [];
 
   store.on('@changed', (state, changes) => {
-    subs.forEach((sub) => {
+    subs.some((sub) => {
       let changesInKeys = sub.keys.some(
         (key) => key in changes,
       );
