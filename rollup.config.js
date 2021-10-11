@@ -1,5 +1,6 @@
 import { existsSync, rmSync } from 'fs';
 import { getBabelOutputPlugin } from '@rollup/plugin-babel';
+import { terser } from 'rollup-plugin-terser';
 
 const babelPlugin = getBabelOutputPlugin({
   presets: [
@@ -39,5 +40,8 @@ export default {
         babelPlugin,
       ],
     },
+  ],
+  plugins: [
+    terser(),
   ],
 };
