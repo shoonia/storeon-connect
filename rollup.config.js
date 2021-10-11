@@ -1,3 +1,4 @@
+import { existsSync, rmSync } from 'fs';
 import { getBabelOutputPlugin } from '@rollup/plugin-babel';
 
 const babelPlugin = getBabelOutputPlugin({
@@ -12,6 +13,10 @@ const babelPlugin = getBabelOutputPlugin({
     ],
   ],
 });
+
+if (existsSync('dist')) {
+  rmSync('dist', { recursive: true });
+}
 
 export default {
   input: './src/index.js',
