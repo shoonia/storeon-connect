@@ -44,20 +44,23 @@
   },
   "sideEffects": false,
   "simple-git-hooks": {
-    "pre-commit": "npm run lint && npm run build && npm run size && npm test"
+    "pre-commit": "npm run lint && npm run build && npm test && npm run size"
   },
   "size-limit": [
     {
       "path": "dist/index.cjs",
-      "limit": "204 B"
+      "import": "{ storeonConnect }",
+      "limit": "200 B"
     },
     {
       "path": "dist/index.es5.js",
-      "limit": "209 B"
+      "import": "{ storeonConnect }",
+      "limit": "172 B"
     },
     {
       "path": "dist/index.js",
-      "limit": "170 B"
+      "import": "{ storeonConnect }",
+      "limit": "132 B"
     }
   ],
   "files": [
