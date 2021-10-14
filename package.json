@@ -1,6 +1,6 @@
 {
   "name": "storeon-connect",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "A tiny connector for observes changes in Storeon",
   "type": "module",
   "main": "dist/index.cjs",
