@@ -20,7 +20,7 @@ export let storeonConnect = (store) => {
     connect(...keys) {
       let cb = keys.pop();
 
-      if (keys.length > 0) {
+      if (keys.length) {
         subs.push({ keys, cb });
       }
 

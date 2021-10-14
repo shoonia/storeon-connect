@@ -51,17 +51,17 @@
     {
       "path": "dist/index.cjs",
       "import": "{ storeonConnect }",
-      "limit": "200 B"
+      "limit": "198 B"
     },
     {
       "path": "dist/index.es5.js",
       "import": "{ storeonConnect }",
-      "limit": "172 B"
+      "limit": "170 B"
     },
     {
       "path": "dist/index.js",
       "import": "{ storeonConnect }",
-      "limit": "132 B"
+      "limit": "130 B"
     }
   ],
   "files": [
