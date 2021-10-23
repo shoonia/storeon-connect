@@ -26,7 +26,7 @@ const appModule: StoreonModule<IState, IEvents> = (store) => {
 };
 
 const store = createStoreon<IState, IEvents>([appModule]);
-const { getState, dispatch, connect } = storeonConnect(store);
+const { getState, setState, dispatch, connect } = storeonConnect(store);
 
 const disconnect = connect('cool', ({ cool }) => { });
 disconnect();
@@ -42,3 +42,6 @@ dispatch('set/user', { name: 'Bob', age: 100 });
 dispatch('set/cool');
 
 const { name, age, cool } = getState();
+
+setState({ name: 'Bob' });
+setState({ name: 'Bob', age: 100, cool: true });
