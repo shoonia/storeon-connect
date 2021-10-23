@@ -14,11 +14,17 @@ export interface StoreonConnect<State, Events> {
   getState(): Readonly<State>;
 
   /**
+   * Set partial state
+   *
+   * @param data Partial part of stare
+   */
+  setState(data: Partial<State>): void;
+
+  /**
    * Emit event.
    *
    * @param event The event name.
    * @param data Any additional data for the event.
-   * @returns The current state.
    */
   dispatch: StoreonDispatch<Events & createStoreon.DispatchableEvents<State>>;
 
