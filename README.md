@@ -9,9 +9,9 @@ A tiny connector for observes changes in [Storeon](https://github.com/storeon/st
 ## How to use
 
 ```bash
-npm i storeon-connect
+npm i storeon storeon-connect
 #or
-yarn add storeon-connect
+yarn add storeon storeon-connect
 ```
 
 ## Example
@@ -35,7 +35,7 @@ export const store = createStoreon([count]);
 import { storeonConnect } from 'storeon-connect';
 import { store } from './store.js';
 
-const { getState, dispatch, connect } = storeonConnect(store);
+const { getState, setState, dispatch, connect } = storeonConnect(store);
 
 const output = document.querySelector('#output');
 const button = document.querySelector('#button');
@@ -57,7 +57,7 @@ button.addEventListener('click', () => {
 ### storeonConnect
 
 ```js
-const { getState, dispatch, connect } = storeonConnect(store);
+const { getState, setState, dispatch, connect } = storeonConnect(store);
 ```
 
 - [Storeon store](https://github.com/storeon/storeon#store)
@@ -75,6 +75,20 @@ Syntax
 
 ```ts
 function getState(): object
+```
+
+### setState
+
+Set partial state. Accepts an object that will assign to the state.
+
+```js
+setState({ xyz: 123 });
+```
+
+Syntax
+
+```ts
+function setState(data: object): void
 ```
 
 ### dispatch
