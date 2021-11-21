@@ -57,7 +57,7 @@
     {
       "path": "dist/index.es5.js",
       "import": "{ storeonConnect }",
-      "limit": "234 B"
+      "limit": "235 B"
     },
     {
       "path": "dist/index.js",
