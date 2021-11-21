@@ -96,7 +96,7 @@ function setState(data: object): void
 Emits an event with optional data.
 
 ```js
-dispatch("event/type", { xyz: 123 });
+dispatch('event/type', { xyz: 123 });
 ```
 
 Syntax
