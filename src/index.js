@@ -1,8 +1,7 @@
 export let storeonConnect = (store) => {
-  let SET_STATE = Symbol();
   let subs = [];
 
-  store.on(SET_STATE, (_, data) => data);
+  store.on('@set', (_, data) => data);
 
   store.on('@changed', (state, changes) => {
     subs.some((sub) => {
@@ -17,11 +16,11 @@ export let storeonConnect = (store) => {
   });
 
   return {
-    getState: store.get,
     dispatch: store.dispatch,
+    getState: store.get,
 
     setState(data) {
-      store.dispatch(SET_STATE, data);
+      store.dispatch('@set', data);
     },
 
     connect(...keys) {
