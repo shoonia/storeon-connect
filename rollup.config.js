@@ -36,6 +36,8 @@ export default {
     {
       file: './dist/index.cjs',
       format: 'cjs',
+      interop: false,
+      esModule: false,
       plugins: [
         babelPlugin,
       ],
